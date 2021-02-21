@@ -2,5 +2,5 @@
 
 Handy python scrips
 
-+ [ ] improve hcv2
-+ [ ] write blog
++ [ ] hcv2
++ [ ] document
