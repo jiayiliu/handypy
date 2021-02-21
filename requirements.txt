@@ -1,3 +1,4 @@
 pillow>=5
 opencv-python>=4
-pyyaml
+pyyaml>=4
+importlib_resources>=5; python_version < '3.7'
