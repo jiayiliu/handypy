@@ -14,7 +14,20 @@ def putText(image: np.ndarray, text: str,
             fontScale=1, color=(0, 0, 255),
             thickness=1,
             lineType=_cv2.LINE_AA,
-            bottomLeftOrigin=False):
+            bottomLeftOrigin=False) -> np.ndarray:
+    """Add text to `cv2` image, with default values.
+
+    :param image: image array
+    :param text: text to be added
+    :param org: origin of text, from top left by default
+    :param font: font choice
+    :param fontScale: font size
+    :param color: BGR color, red by default
+    :param thickness: font thickness
+    :param lineType: line type of text
+    :param bottomLeftOrigin: True to start from bottom left, default False
+    :return: image with text added
+    """
     return _cv2.putText(image, text, org, font, fontScale, color, thickness, lineType, bottomLeftOrigin)
 
 
@@ -24,7 +37,20 @@ def putChineseText(image: np.ndarray, text: str,
                    fontScale=1, color=(0, 0, 255),
                    thickness=1,
                    lineType=None,
-                   bottomLeftOrigin=False):
+                   bottomLeftOrigin=False) -> np.ndarray:
+    """Add CJK text to image
+
+    :param image: image array
+    :param text: text to be added
+    :param org: origin of text, from top left by default
+    :param font: font name if in the system, or font file path
+    :param fontScale: font size. Size 1 corresponds to 12 pixel.
+    :param color: BGR color, default red.
+    :param thickness: no effect, place holder.
+    :param lineType:  no effect, place holder.
+    :param bottomLeftOrigin: True to start from bottom left, default False
+    :return: image with text added
+    """
     grey_flag = len(image.shape) == 2
     if grey_flag:
         image = _cv2.cvtColor(image, _cv2.COLOR_GRAY2BGR)

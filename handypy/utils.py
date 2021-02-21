@@ -1,3 +1,9 @@
+"""
+Utility Functions
+=================
+
+
+"""
 import logging
 import os
 from argparse import Namespace
@@ -8,8 +14,8 @@ logger = logging.getLogger(__name__)
 
 
 def validate_folder(folder: str) -> None:
-    """
-    Validate target folder exists, if not exist, an empty folder will be created.
+    """Validate target folder exists, if not exist, an empty folder will be created.
+
     :param folder: folder path
     """
     if os.path.isfile(folder):
@@ -18,8 +24,8 @@ def validate_folder(folder: str) -> None:
 
 
 def set_log(level: str = 'info') -> None:
-    """
-    Set Logger level
+    """Set Logger level
+
     :param level: info|warn|error|critical etc.
     """
     try:
@@ -33,8 +39,8 @@ def set_log(level: str = 'info') -> None:
 
 
 def load_yaml_namespace(filename: str) -> Namespace:
-    """
-    Load YAML config into a Namespace object
+    """Load YAML config into a Namespace object
+
     :param filename: YAML file
     :return: Namespace object that attributes are accessible directly
     """
