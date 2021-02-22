@@ -1,9 +1,13 @@
 from setuptools import setup
 
+long_description = open("README.md").read()
+
 setup(name='handypy',
-      version='0.2',
+      version='0.2.1',
       description='Handy Python scripts',
-      url='http://github.com/jiayiliu/handypy',
+      long_description=long_description,
+      long_description_content_type='text/markdown',
+      url='https://jiayiliu.github.io/handypy/index.html',
       author='Jiayi Liu',
       author_email='jiayiliu@users.noreply.github.com',
       license='MIT',
