@@ -1,8 +1,8 @@
+import logging
 import os
 import tempfile
 
 import pytest
-import logging
 
 import handypy.utils as utils
 

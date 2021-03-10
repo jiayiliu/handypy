@@ -4,15 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Handy CV2 &#8212; HandyPy 0.2 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,7 +35,8 @@
           <a href="handypy.html" title="HandyPy Functions"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">HandyPy 0.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="handypy.html" accesskey="U">HandyPy Functions</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="handypy.html" accesskey="U">HandyPy Functions</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Handy CV2</a></li> 
       </ul>
     </div>  
 
@@ -48,7 +49,7 @@
 <h1>Handy CV2<a class="headerlink" href="#handy-cv2" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="handypy.hcv2.putChineseText">
-<code class="sig-prename descclassname">handypy.hcv2.</code><code class="sig-name descname">putChineseText</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">org</span><span class="o">=</span><span class="default_value">0, 0</span></em>, <em class="sig-param"><span class="n">font</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fontScale</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">0, 0, 255</span></em>, <em class="sig-param"><span class="n">thickness</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">lineType</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">bottomLeftOrigin</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/handypy/hcv2.html#putChineseText"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#handypy.hcv2.putChineseText" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">handypy.hcv2.</span></code><code class="sig-name descname"><span class="pre">putChineseText</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">org</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontScale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottomLeftOrigin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/handypy/hcv2.html#putChineseText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.hcv2.putChineseText" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add CJK text to image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -72,7 +73,7 @@
 
 <dl class="py function">
 <dt id="handypy.hcv2.putText">
-<code class="sig-prename descclassname">handypy.hcv2.</code><code class="sig-name descname">putText</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">org</span><span class="o">=</span><span class="default_value">0, 0</span></em>, <em class="sig-param"><span class="n">font</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">fontScale</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">0, 0, 255</span></em>, <em class="sig-param"><span class="n">thickness</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">lineType</span><span class="o">=</span><span class="default_value">16</span></em>, <em class="sig-param"><span class="n">bottomLeftOrigin</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/handypy/hcv2.html#putText"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#handypy.hcv2.putText" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">handypy.hcv2.</span></code><code class="sig-name descname"><span class="pre">putText</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">org</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontScale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottomLeftOrigin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/handypy/hcv2.html#putText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.hcv2.putText" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add text to <cite>cv2</cite> image, with default values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -97,6 +98,7 @@
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -145,12 +147,13 @@
           <a href="handypy.html" title="HandyPy Functions"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">HandyPy 0.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="handypy.html" >HandyPy Functions</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="handypy.html" >HandyPy Functions</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Handy CV2</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Jiayi Liu.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
     </div>
   </body>
 </html>

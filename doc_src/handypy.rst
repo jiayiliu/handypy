@@ -6,6 +6,7 @@ HandyPy Functions
    :caption: Contents:
 
    handypy.hcv2
+   handypy.parallel
    handypy.utils
 
 
