@@ -1,4 +1,8 @@
-from handypy.parallel import parallel, parallel_tqdm
+import os.path as osp
+
+from handypy.parallel import *
+
+test_script = osp.dirname(osp.abspath(__file__)) + "/echo.sh"
 
 
 def _mul2(x):
@@ -16,3 +20,6 @@ def test_parallel():
     res = mul2p(inp)
     for i, j in zip(inp, res):
         assert i[0] * 2 == j, i
+
+    parallel_bash(open(test_script).readlines())
+    parallel_bash_tqdm(open(test_script).readlines())

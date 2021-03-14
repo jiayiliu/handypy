@@ -47,11 +47,19 @@
             
   <span class="target" id="module-handypy.parallel"></span><div class="section" id="parallel">
 <h1>Parallel<a class="headerlink" href="#parallel" title="Permalink to this headline">¶</a></h1>
+<p>Convert a function into parallel run.</p>
 <dl class="py function">
 <dt id="handypy.parallel.parallel">
 <code class="sig-prename descclassname"><span class="pre">handypy.parallel.</span></code><code class="sig-name descname"><span class="pre">parallel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">np</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/handypy/parallel.html#parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.parallel.parallel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a function to parallel version</p>
-<p>Example</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mul2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
+
+<span class="n">parallel_mul2</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span><span class="n">mul2</span><span class="p">)</span>
+<span class="n">parallel_mul2</span><span class="p">([(</span><span class="n">i</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -60,19 +68,41 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a function takes a list of lists.</p>
+<dd class="field-even"><p>a function takes a list of <strong>lists</strong>.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="handypy.parallel.parallel_bash">
-<code class="sig-prename descclassname"><span class="pre">handypy.parallel.</span></code><code class="sig-name descname"><span class="pre">parallel_bash</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">np</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/handypy/parallel.html#parallel_bash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.parallel.parallel_bash" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run bash script line by line</p>
+<code class="sig-prename descclassname"><span class="pre">handypy.parallel.</span></code><code class="sig-name descname"><span class="pre">parallel_bash</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scripts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">np</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/handypy/parallel.html#parallel_bash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.parallel.parallel_bash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run bash script line by line in parallel
+Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parallel_bash</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;script.sh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>script</strong> – script file - each line is an independent command to be execute</p></li>
+<li><p><strong>scripts</strong> – list of scripts to run</p></li>
+<li><p><strong>np</strong> – number of parallel jobs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="handypy.parallel.parallel_bash_tqdm">
+<code class="sig-prename descclassname"><span class="pre">handypy.parallel.</span></code><code class="sig-name descname"><span class="pre">parallel_bash_tqdm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scripts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">np</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/handypy/parallel.html#parallel_bash_tqdm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.parallel.parallel_bash_tqdm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run bash script line by line in parallel with tqdm progress bar
+Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parallel_bash_tqdm</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;script.sh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scripts</strong> – list of scritps to run</p></li>
 <li><p><strong>np</strong> – number of parallel jobs</p></li>
 </ul>
 </dd>
@@ -82,7 +112,15 @@
 <dl class="py function">
 <dt id="handypy.parallel.parallel_tqdm">
 <code class="sig-prename descclassname"><span class="pre">handypy.parallel.</span></code><code class="sig-name descname"><span class="pre">parallel_tqdm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">np</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/handypy/parallel.html#parallel_tqdm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.parallel.parallel_tqdm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a function to parallel version with tqdm progress bar</p>
+<dd><p>Convert a function to parallel version with tqdm progress bar.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mul2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
+
+<span class="n">parallel_mul2</span> <span class="o">=</span> <span class="n">parallel_tqdm</span><span class="p">(</span><span class="n">mul2</span><span class="p">)</span>
+<span class="n">parallel_mul2</span><span class="p">([(</span><span class="n">i</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

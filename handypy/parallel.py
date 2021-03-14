@@ -1,26 +1,33 @@
 """
 Parallel
 ========
+
+Convert a function into parallel run.
+
 """
 import multiprocessing
+import os
 
 
 def parallel(func, np=8):
     """Convert a function to parallel version
 
-    Example
+    Example:
 
-    .. code:
-      def mul2(x):
-        return x*2
+    .. highlight:: python
+    .. code-block:: python
 
-      parallel_mul2 = parallel(mul2)
-      parallel_mul2([(i,) for i in range(10)])
+        def mul2(x):
+          return x*2
+
+        parallel_mul2 = parallel(mul2)
+        parallel_mul2([(i,) for i in range(10)])
 
     :param func: function
     :param np: number of parallel jobs
-    :return: a function takes a list of lists.
+    :return: a function takes a list of **lists**.
     """
+
     def wrapper(iter_list):
         with multiprocessing.Pool(np) as pool:
             return pool.starmap(func, iter_list)
@@ -29,7 +36,18 @@ def parallel(func, np=8):
 
 
 def parallel_tqdm(func, np=8):
-    """Convert a function to parallel version with tqdm progress bar
+    """Convert a function to parallel version with tqdm progress bar.
+
+    Example:
+
+    .. highlight:: python
+    .. code-block:: python
+
+        def mul2(x):
+          return x*2
+
+        parallel_mul2 = parallel_tqdm(mul2)
+        parallel_mul2([(i,) for i in range(10)])
 
     :param func: function
     :param np: number of parallel jobs
@@ -52,17 +70,37 @@ def parallel_tqdm(func, np=8):
     return wrapper
 
 
-def parallel_bash(script, np=8):
+def parallel_bash(scripts, np=8):
     """
-    Run bash script line by line
+    Run bash script line by line in parallel
+    Example:
 
-    :param script: script file - each line is an independent command to be execute
+    .. highlight:: python
+    .. code-block:: python
+
+        parallel_bash(open("script.sh").readlines())
+
+    :param scripts: list of scripts to run
     :param np: number of parallel jobs
     """
-    import os
-    cmd = open(script).readlines()
-    cmd = [i.strip().split() for i in cmd]
-    cmd = [i for i in cmd if i]
+    cmd = [(i.strip(),) for i in scripts]
+    call = parallel(os.system, np)
+    call(cmd)
 
-    with multiprocessing.Pool(np) as pool:
-        return pool.starmap(os.system, cmd)
+
+def parallel_bash_tqdm(scripts, np=8):
+    """
+    Run bash script line by line in parallel with tqdm progress bar
+    Example:
+
+    .. highlight:: python
+    .. code-block:: python
+
+        parallel_bash_tqdm(open("script.sh").readlines())
+
+    :param scripts: list of scritps to run
+    :param np: number of parallel jobs
+    """
+    cmd = [(i,) for i in scripts]
+    call = parallel_tqdm(os.system, np)
+    call(cmd)
