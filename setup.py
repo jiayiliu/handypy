@@ -11,5 +11,6 @@ setup(name='handypy',
       author='Jiayi Liu',
       author_email='jiayiliu@users.noreply.github.com',
       license='MIT',
-      packages=['handypy'],
+      packages=['handypy', 'handypy.resources'],
+      package_data={"handypy.resources":["*.ttc"]},
       zip_safe=False)
