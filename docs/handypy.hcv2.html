@@ -16,7 +16,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Utility Functions" href="handypy.utils.html" />
+    <link rel="next" title="Parallel" href="handypy.parallel.html" />
     <link rel="prev" title="HandyPy Functions" href="handypy.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -29,7 +29,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="handypy.utils.html" title="Utility Functions"
+          <a href="handypy.parallel.html" title="Parallel"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="handypy.html" title="HandyPy Functions"
@@ -47,6 +47,43 @@
             
   <span class="target" id="module-handypy.hcv2"></span><div class="section" id="handy-cv2">
 <h1>Handy CV2<a class="headerlink" href="#handy-cv2" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="handypy.hcv2.imread">
+<code class="sig-prename descclassname"><span class="pre">handypy.hcv2.</span></code><code class="sig-name descname"><span class="pre">imread</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/handypy/hcv2.html#imread"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.hcv2.imread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail-safe image read</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> – Pass to <code class="code docutils literal notranslate"><span class="pre">cv2.imread()</span></code>.  <cite>filename</cite> is required.</p></li>
+<li><p><strong>kwargs</strong> – Pass to <code class="code docutils literal notranslate"><span class="pre">cv2.imread()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>image numpy array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="handypy.hcv2.imwrite">
+<code class="sig-prename descclassname"><span class="pre">handypy.hcv2.</span></code><code class="sig-name descname"><span class="pre">imwrite</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/handypy/hcv2.html#imwrite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.hcv2.imwrite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fail-safe and convenient image write.  Put image and image filename in any order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> – Pass to <code class="code docutils literal notranslate"><span class="pre">cv2.imwrite()</span></code>.  <cite>filename</cite> and <cite>img</cite> are required as arguments (order-free) or keywords.</p></li>
+<li><p><strong>kwargs</strong> – Pass to <code class="code docutils literal notranslate"><span class="pre">cv2.imwrite()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0,1</p>
+</dd>
+<dt class="field-odd">Raise</dt>
+<dd class="field-odd"><p>RuntimeError</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt id="handypy.hcv2.putChineseText">
 <code class="sig-prename descclassname"><span class="pre">handypy.hcv2.</span></code><code class="sig-name descname"><span class="pre">putChineseText</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">org</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontScale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottomLeftOrigin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/handypy/hcv2.html#putChineseText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#handypy.hcv2.putChineseText" title="Permalink to this definition">¶</a></dt>
@@ -108,8 +145,8 @@
   <p class="topless"><a href="handypy.html"
                         title="previous chapter">HandyPy Functions</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="handypy.utils.html"
-                        title="next chapter">Utility Functions</a></p>
+  <p class="topless"><a href="handypy.parallel.html"
+                        title="next chapter">Parallel</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -141,7 +178,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="handypy.utils.html" title="Utility Functions"
+          <a href="handypy.parallel.html" title="Parallel"
              >next</a> |</li>
         <li class="right" >
           <a href="handypy.html" title="HandyPy Functions"

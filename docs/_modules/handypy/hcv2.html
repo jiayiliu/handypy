@@ -99,9 +99,9 @@
         <span class="n">org</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">org</span><span class="p">)</span>
         <span class="n">org</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">org</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="n">fontScale</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fontScale</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">fontScale</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fontScale</span> <span class="o">*</span> <span class="mi">12</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">thickness</span><span class="o">!=</span><span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">thickness</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Use fontScale to control thickness.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">lineType</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Use font to control style.&quot;</span><span class="p">)</span>
@@ -129,6 +129,41 @@
     <span class="k">if</span> <span class="n">grey_flag</span><span class="p">:</span>
         <span class="n">image</span> <span class="o">=</span> <span class="n">_cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">_cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">image</span></div>
+
+
+<div class="viewcode-block" id="imread"><a class="viewcode-back" href="../../handypy.hcv2.html#handypy.hcv2.imread">[docs]</a><span class="k">def</span> <span class="nf">imread</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Fail-safe image read</span>
+
+<span class="sd">    :param args: Pass to :code:`cv2.imread()`.  `filename` is required.</span>
+<span class="sd">    :param kwargs: Pass to :code:`cv2.imread()`.</span>
+<span class="sd">    :return: image numpy array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">_cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">img</span></div>
+
+
+<div class="viewcode-block" id="imwrite"><a class="viewcode-back" href="../../handypy.hcv2.html#handypy.hcv2.imwrite">[docs]</a><span class="k">def</span> <span class="nf">imwrite</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Fail-safe and convenient image write.  Put image and image filename in any order.</span>
+
+<span class="sd">    :param args: Pass to :code:`cv2.imwrite()`.  `filename` and `img` are required as arguments (order-free) or keywords.</span>
+<span class="sd">    :param kwargs: Pass to :code:`cv2.imwrite()`.</span>
+<span class="sd">    :return: 0,1</span>
+<span class="sd">    :raise: RuntimeError</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;filename&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s1">&#39;img&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+            <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">flag</span> <span class="o">=</span> <span class="n">_cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">flag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Fail to write to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">flag</span></div>
+
+
+<span class="c1"># TODO: ratio-based resize functions</span>
 </pre></div>
 
             <div class="clearer"></div>

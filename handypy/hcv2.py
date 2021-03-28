@@ -59,9 +59,9 @@ def putChineseText(image: np.ndarray, text: str,
         org = list(org)
         org[1] = image.shape[1] - org[1]
 
-    fontScale = int(fontScale*12)
+    fontScale = int(fontScale * 12)
 
-    if thickness!=1:
+    if thickness != 1:
         print("Use fontScale to control thickness.")
     if lineType is not None:
         print("Use font to control style.")
@@ -89,3 +89,38 @@ def putChineseText(image: np.ndarray, text: str,
     if grey_flag:
         image = _cv2.cvtColor(image, _cv2.COLOR_BGR2GRAY)
     return image
+
+
+def imread(*args, **kwargs) -> np.ndarray:
+    """Fail-safe image read
+
+    :param args: Pass to :code:`cv2.imread()`.  `filename` is required.
+    :param kwargs: Pass to :code:`cv2.imread()`.
+    :return: image numpy array
+    """
+    img = _cv2.imread(*args, **kwargs)
+    if img is None:
+        raise FileNotFoundError(args[0])
+    return img
+
+
+def imwrite(*args, **kwargs) -> int:
+    """Fail-safe and convenient image write.  Put image and image filename in any order.
+
+    :param args: Pass to :code:`cv2.imwrite()`.  `filename` and `img` are required as arguments (order-free) or keywords.
+    :param kwargs: Pass to :code:`cv2.imwrite()`.
+    :return: 0,1
+    :raise: RuntimeError
+    """
+    if 'filename' not in kwargs and 'img' not in kwargs:
+        if isinstance(args[1], str):
+            args = [i for i in args]
+            args[0], args[1] = args[1], args[0]
+    flag = _cv2.imwrite(*args, **kwargs)
+
+    if flag == 0:
+        raise RuntimeError("Fail to write to %s" % args[0])
+    return flag
+
+
+# TODO: ratio-based resize functions
