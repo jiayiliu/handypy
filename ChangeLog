@@ -1,0 +1,21 @@
+CHANGES
+=======
+
+* change default log format
+* merge setup.py
+* update cv2 image io interface
+* Update setup.py
+* update parallel part
+* fix version number
+* update with parallel module
+* add dev branch
+* test minor fix
+* update doc structure
+* add html doc
+* fix python verion >=3.7
+* improve travis
+* fix dependency
+* update travis
+* update cv2; unittest; codecov
+* update utils
+* Initial commit
