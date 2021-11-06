@@ -49,7 +49,7 @@ def set_adv_log(screen_level:str = 'info', log_file:str=None, file_log_level:str
     file_log_level = _get_logging_level(file_log_level)
     logging.basicConfig(level=file_log_level,
                         format='%(asctime)s:%(name)-25s:%(funcName)20s:%(lineno)d:%(levelname)-8s: %(message)s',
-                        filename=file_log_level, **kwargs)
+                        filename=log_file, **kwargs)
 
     screen_handler = logging.StreamHandler()
     screen_handler.setLevel(screen_level)
